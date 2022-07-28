@@ -1,0 +1,21 @@
+@import 'styles/variables';
+
+.artboard-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $margin-xl;
+  align-items: center;
+  padding: $padding-m;
+
+  .artboard-item {
+    p {
+      text-align: center;
+    }
+    img {
+      width: 240px;
+      height: 305px;
+      object-fit: contain;
+      margin-bottom: $margin-s;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import styles from './Header.module.scss';
 import { ReactComponent as Logo } from 'assets/icons/sketch-logo.svg';
 
 type HeaderProps = {
-  title: string | number;
+  title?: string | number;
 };
 
 function Header({ title }: HeaderProps) {
