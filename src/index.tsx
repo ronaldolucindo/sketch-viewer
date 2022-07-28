@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import DocumentPage from 'modules/document/DocumentPage';
 import reportWebVitals from './reportWebVitals';
-import DocumentPage from './modules/document/DocumentPage';
+
 import './styles/index.scss';
 
 const root = ReactDOM.createRoot(
