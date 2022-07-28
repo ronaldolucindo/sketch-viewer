@@ -1,5 +1,11 @@
+import Header from 'components/header/Header';
+
 function DocumentPage() {
-  return <p>Document</p>;
+  return (
+    <>
+      <Header title={'title'} />
+    </>
+  );
 }
 
 export default DocumentPage;
