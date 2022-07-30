@@ -1,3 +1,6 @@
+import { useMemo } from 'react';
+import Image from 'components/image/Image';
+import Loader from 'components/loader/Loader';
 import Viewer from 'components/viewer/Viewer';
 import { apiToViewerFromat } from 'modules/document/dataTransform';
 import { DocumentState } from 'modules/document/documentReducer';
@@ -28,7 +31,8 @@ function ArtboardList(props: ArtboardListProps) {
     userClicksNextArtboard,
     userClicksPrevArtboard,
   } = props;
-  if (isLoading) return <p>Loading...</p>;
+  const viewerData = useMemo(() => apiToViewerFromat(data), [data]);
+  if (isLoading) return <Loader />;
   if (isError) return <p>Error loading document data</p>;
 
   return (
@@ -41,7 +45,8 @@ function ArtboardList(props: ArtboardListProps) {
               key={artboard.identifier}
               onClick={() => userOpensArtboard(index)}
             >
-              <img
+              <Image
+                className={styles.image}
                 src={artboard.files[0].thumbnails[0].url}
                 alt={artboard.name}
               />
@@ -54,7 +59,7 @@ function ArtboardList(props: ArtboardListProps) {
             onNextItem={userClicksNextArtboard}
             onPrevItem={userClicksPrevArtboard}
             currentIndex={state.currentArtboard}
-            data={apiToViewerFromat(data)}
+            data={viewerData}
           />
         </>
       )}

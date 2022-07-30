@@ -3,19 +3,34 @@
 .artboard-list {
   display: flex;
   flex-wrap: wrap;
-  gap: $margin-xl;
+  column-gap: $margin-xl;
+  row-gap: $margin-m;
   align-items: center;
   padding: $padding-m;
 
   .artboard-item {
-    p {
-      text-align: center;
+    cursor: pointer;
+    &:hover {
+      p {
+        color: $color-primary;
+      }
+      .image {
+        border: 2px solid $color-primary;
+        object-fit: cover;
+      }
     }
-    img {
+    p {
+      font-size: 14px;
+      color: $color-gray65;
+      text-align: center;
+      transition: all 0.2s;
+    }
+    .image {
       width: 240px;
       height: 305px;
       object-fit: contain;
       margin-bottom: $margin-s;
+      transition: all 0.2s;
     }
   }
 }
