@@ -1,0 +1,40 @@
+@import 'styles/variables';
+
+.loader {
+  border-radius: 50%;
+  background-color: $color-primary;
+  box-shadow: 32px 0 $color-primary, -32px 0 $color-primary;
+  position: relative;
+  animation: flash 0.5s ease-out infinite alternate;
+
+  &.medium {
+    width: 16px;
+    height: 16px;
+  }
+  &.small {
+    width: 8px;
+    height: 8px;
+  }
+  @keyframes flash {
+    0% {
+      background-color: #fff2;
+      box-shadow: 32px 0 #fff2, -32px 0 $color-primary;
+    }
+    50% {
+      background-color: $color-primary;
+      box-shadow: 32px 0 #fff2, -32px 0 #fff2;
+    }
+    100% {
+      background-color: #fff2;
+      box-shadow: 32px 0 $color-primary, -32px 0 #fff2;
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
