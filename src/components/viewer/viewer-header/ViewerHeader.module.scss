@@ -7,7 +7,7 @@
   padding: $padding-m $padding-s;
 
   .navbar {
-    width: 150px;
+    width: 180px;
     display: flex;
     align-items: center;
     column-gap: $margin-xs;
@@ -17,6 +17,10 @@
       border: none;
       padding: $padding-s;
       cursor: pointer;
+
+      &:disabled {
+        cursor: not-allowed;
+      }
     }
   }
 

@@ -1,9 +1,10 @@
 import Modal from 'components/modal/Modal';
 import ViewerHeader from './viewer-header/ViewerHeader';
+import styles from './Viewer.module.scss';
 
 type ViewerItem = {
   title: string;
-  url: string;
+  url?: string;
   id: string;
 };
 
@@ -32,7 +33,11 @@ function Viewer(props: ViewerProps) {
         />
       }
     >
-      Content here
+      <img
+        className={styles['viewer-img']}
+        src={data[currentIndex].url}
+        alt={data[currentIndex].title}
+      />
     </Modal>
   );
 }

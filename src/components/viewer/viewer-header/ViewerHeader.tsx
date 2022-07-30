@@ -11,16 +11,26 @@ type ViewerHeaderProps = {
 };
 function ViewerHeader(props: ViewerHeaderProps) {
   const { totalItems, currentIndex, title, onNextItem, onPrevItem } = props;
+  const isNextButtonDisabled = currentIndex + 1 === totalItems;
+  const isPrevButtonDisabled = currentIndex === 0;
   return (
     <header className={styles['viewer-header']}>
       <div className={styles.navbar}>
-        <button type="button" onClick={onPrevItem}>
+        <button
+          type="button"
+          onClick={onPrevItem}
+          disabled={isPrevButtonDisabled}
+        >
           <PrevIcon />
         </button>
         <p>
           {currentIndex + 1} / {totalItems}
         </p>
-        <button type="button" onClick={onNextItem}>
+        <button
+          type="button"
+          onClick={onNextItem}
+          disabled={isNextButtonDisabled}
+        >
           <NextIcon />
         </button>
       </div>

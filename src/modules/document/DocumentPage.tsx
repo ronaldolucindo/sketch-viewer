@@ -1,11 +1,19 @@
 import Header from 'components/header/Header';
-import { useGetDocument } from 'common/useRequest/useRequest';
 import ArtboardList from './components/artboard-list/ArtboardList';
+import useDocument from './useDocument';
 
 function DocumentPage() {
-  const { data, isError, isLoading, isSuccess } = useGetDocument(
-    'e981971c-ff57-46dc-a932-a60dc1804992'
-  );
+  const {
+    state,
+    data,
+    isError,
+    isLoading,
+    isSuccess,
+    userOpensArtboard,
+    userClosesArtboard,
+    userClicksNextArtboard,
+    userClicksPrevArtboard,
+  } = useDocument();
   const artboards = data?.version.document.artboards.entries || [];
 
   return (
@@ -16,6 +24,11 @@ function DocumentPage() {
         isLoading={isLoading}
         isSuccess={isSuccess}
         data={artboards}
+        state={state}
+        userOpensArtboard={userOpensArtboard}
+        userClosesArtboard={userClosesArtboard}
+        userClicksNextArtboard={userClicksNextArtboard}
+        userClicksPrevArtboard={userClicksPrevArtboard}
       />
     </>
   );
