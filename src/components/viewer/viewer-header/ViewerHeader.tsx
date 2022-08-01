@@ -1,6 +1,8 @@
 import styles from './ViewerHeader.module.scss';
 import { ReactComponent as PrevIcon } from 'assets/icons/arrow-left.svg';
 import { ReactComponent as NextIcon } from 'assets/icons/arrow-right.svg';
+import { ReactComponent as SeparatorIcon } from 'assets/icons/separator.svg';
+import { ReactComponent as BreadcrumbIcon } from 'assets/icons/breadcrumb.svg';
 
 type ViewerHeaderProps = {
   currentIndex: number;
@@ -15,6 +17,7 @@ function ViewerHeader(props: ViewerHeaderProps) {
   const isPrevButtonDisabled = currentIndex === 0;
   return (
     <header className={styles['viewer-header']}>
+      <SeparatorIcon className={styles.separator} />
       <div className={styles.navbar}>
         <button
           type="button"
@@ -24,7 +27,7 @@ function ViewerHeader(props: ViewerHeaderProps) {
           <PrevIcon />
         </button>
         <p>
-          {currentIndex + 1} / {totalItems}
+          {currentIndex + 1} <BreadcrumbIcon /> {totalItems}
         </p>
         <button
           type="button"

@@ -1,6 +1,7 @@
 import Header from 'components/header/Header';
 import ArtboardList from './components/artboard-list/ArtboardList';
 import useDocument from './useDocument';
+import styles from './DocumentPage.module.scss';
 
 function DocumentPage() {
   const {
@@ -19,17 +20,19 @@ function DocumentPage() {
   return (
     <>
       <Header title={data?.version.document.name} />
-      <ArtboardList
-        isError={isError}
-        isLoading={isLoading}
-        isSuccess={isSuccess}
-        data={artboards}
-        state={state}
-        userOpensArtboard={userOpensArtboard}
-        userClosesArtboard={userClosesArtboard}
-        userClicksNextArtboard={userClicksNextArtboard}
-        userClicksPrevArtboard={userClicksPrevArtboard}
-      />
+      <main className={styles.main}>
+        <ArtboardList
+          isError={isError}
+          isLoading={isLoading}
+          isSuccess={isSuccess}
+          data={artboards}
+          state={state}
+          userOpensArtboard={userOpensArtboard}
+          userClosesArtboard={userClosesArtboard}
+          userClicksNextArtboard={userClicksNextArtboard}
+          userClicksPrevArtboard={userClicksPrevArtboard}
+        />
+      </main>
     </>
   );
 }

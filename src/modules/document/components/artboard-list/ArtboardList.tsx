@@ -32,7 +32,12 @@ function ArtboardList(props: ArtboardListProps) {
     userClicksPrevArtboard,
   } = props;
   const viewerData = useMemo(() => apiToViewerFromat(data), [data]);
-  if (isLoading) return <Loader />;
+  if (isLoading)
+    return (
+      <div className={styles['loader-container']}>
+        <Loader />
+      </div>
+    );
   if (isError) return <p>Error loading document data</p>;
 
   return (

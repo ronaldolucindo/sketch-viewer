@@ -1,5 +1,6 @@
+@import 'styles/variables';
 .viewer-img {
   width: 100%;
-  height: 90%;
+  height: calc(100vh - $header-height - $padding-xl - $padding-xl);
   object-fit: contain;
 }

@@ -2,12 +2,18 @@
 
 .viewer-header {
   width: 100%;
+  height: $header-height;
   display: flex;
   align-items: center;
-  padding: $padding-m $padding-s;
+  justify-content: space-between;
+  padding: $padding-m 0;
+
+  .separator {
+    height: 32px;
+  }
 
   .navbar {
-    width: 180px;
+    flex: 1;
     display: flex;
     align-items: center;
     column-gap: $margin-xs;
@@ -25,9 +31,7 @@
   }
 
   h2 {
-    width: 100%;
-    display: flex;
-    justify-content: center;
+    flex: 1.25;
     font-size: 16px;
     font-weight: 600;
   }
