@@ -1,4 +1,5 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .header {
   width: 100%;
@@ -12,6 +13,10 @@
   column-gap: $margin-l;
   background-color: $color-white;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+
+  @include mobile-layout {
+    column-gap: $margin-s;
+  }
 
   .separator {
     height: 32px;

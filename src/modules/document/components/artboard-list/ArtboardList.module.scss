@@ -1,14 +1,24 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .artboard-list {
-  display: flex;
-  flex-wrap: wrap;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   column-gap: $margin-xl;
   row-gap: $margin-m;
-  align-items: center;
   padding: $padding-m;
 
+  @include mobile-layout {
+    justify-content: center;
+  }
+
   .artboard-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
     cursor: pointer;
     &:hover {
       p {
@@ -22,7 +32,6 @@
     p {
       font-size: 14px;
       color: $color-gray65;
-      text-align: center;
       transition: all 0.2s;
     }
     .image {

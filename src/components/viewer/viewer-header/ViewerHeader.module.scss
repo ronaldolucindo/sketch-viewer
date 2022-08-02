@@ -1,4 +1,5 @@
 @import 'styles/variables';
+@import 'styles/mixins';
 
 .viewer-header {
   width: 100%;
@@ -18,6 +19,10 @@
     align-items: center;
     column-gap: $margin-xs;
 
+    @include mobile-layout {
+      font-size: 14px;
+    }
+
     button {
       background: transparent;
       border: none;
@@ -26,6 +31,10 @@
 
       &:disabled {
         cursor: not-allowed;
+      }
+
+      @include mobile-layout {
+        padding: $padding-s $padding-xs;
       }
     }
   }
