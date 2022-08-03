@@ -38,7 +38,12 @@ function ArtboardList(props: ArtboardListProps) {
         <Loader />
       </div>
     );
-  if (isError) return <p>Error loading document data</p>;
+  if (isError)
+    return (
+      <div className={styles['error-container']}>
+        <p>Error loading document data</p>
+      </div>
+    );
 
   return (
     <div className={styles['artboard-list']}>

@@ -1,5 +1,6 @@
 import { useGetDocument } from 'common/useRequest/useRequest';
 import { useReducer } from 'react';
+import { useParams } from 'react-router-dom';
 import documentReducer, {
   INITIAL_STATE,
   DocumentActions,
@@ -7,9 +8,8 @@ import documentReducer, {
 
 function useDocument() {
   const [state, dispatch] = useReducer(documentReducer, INITIAL_STATE);
-  const { data, isError, isLoading, isSuccess } = useGetDocument(
-    'e981971c-ff57-46dc-a932-a60dc1804992'
-  );
+  const { documentId = '' } = useParams();
+  const { data, isError, isLoading, isSuccess } = useGetDocument(documentId);
 
   const userOpensArtboard = (index: number) => {
     return dispatch({

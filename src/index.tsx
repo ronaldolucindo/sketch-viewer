@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import DocumentPage from 'modules/document/DocumentPage';
 import reportWebVitals from './reportWebVitals';
 
 import './styles/index.scss';
+
+const DEFAULT_DOCUMENT = 'e981971c-ff57-46dc-a932-a60dc1804992';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,7 +23,19 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <DocumentPage />
+      <BrowserRouter>
+        <Routes>
+          <Route
+            path="/"
+            element={<Navigate to={`/document/${DEFAULT_DOCUMENT}`} />}
+          />
+          <Route
+            path="/document"
+            element={<Navigate to={`/document/${DEFAULT_DOCUMENT}`} />}
+          />
+          <Route path="document/:documentId" element={<DocumentPage />} />
+        </Routes>
+      </BrowserRouter>
     </QueryClientProvider>
   </React.StrictMode>
 );
