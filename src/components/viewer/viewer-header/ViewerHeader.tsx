@@ -23,21 +23,23 @@ function ViewerHeader(props: ViewerHeaderProps) {
           type="button"
           onClick={onPrevItem}
           disabled={isPrevButtonDisabled}
+          data-testid="Viewer.prevBtn"
         >
           <PrevIcon />
         </button>
-        <p>
+        <p data-testid="Viewer.navInfo">
           {currentIndex + 1} <BreadcrumbIcon /> {totalItems}
         </p>
         <button
           type="button"
           onClick={onNextItem}
           disabled={isNextButtonDisabled}
+          data-testid="Viewer.nextBtn"
         >
           <NextIcon />
         </button>
       </div>
-      <h2>{title}</h2>
+      <h2 data-testid="Viewer.title">{title}</h2>
     </header>
   );
 }

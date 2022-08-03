@@ -8,10 +8,10 @@ type HeaderProps = {
 
 function Header({ title }: HeaderProps) {
   return (
-    <header className={styles.header}>
+    <header className={styles.header} data-testid="Header">
       <Logo />
       <SeparatorIcon className={styles.separator} />
-      <h1>{title}</h1>
+      <h1 data-testid="Header.title">{title}</h1>
     </header>
   );
 }

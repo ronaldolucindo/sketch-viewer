@@ -6,7 +6,12 @@ type ReactPortalProps = {
 };
 
 function ReactPortal({ children, wrapperId = 'root' }: ReactPortalProps) {
-  const wrapper = document.getElementById(wrapperId) as HTMLElement;
+  let wrapper = document.getElementById(wrapperId) as HTMLElement;
+  if (!wrapper) {
+    wrapper = document.createElement('div');
+    wrapper.setAttribute('id', wrapperId);
+    document.body.appendChild(wrapper);
+  }
   return createPortal(children, wrapper);
 }
 

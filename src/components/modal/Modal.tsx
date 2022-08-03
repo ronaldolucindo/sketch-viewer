@@ -22,18 +22,21 @@ function Modal({ isOpen, children, header, onClose }: ModalProps) {
 
   return isOpen ? (
     <ReactPortal>
-      <div className={styles.modal} aria-modal>
+      <div className={styles.modal} aria-modal data-testid="Modal">
         <div className={styles.header}>
           <button
             className={styles['close-btn']}
             type="button"
             onClick={onClose}
+            data-testid="Modal.closeBtn"
           >
             <CloseIcon />
           </button>
           {header}
         </div>
-        <div className={styles.content}>{children}</div>
+        <div className={styles.content} data-testid="Modal.content">
+          {children}
+        </div>
       </div>
     </ReactPortal>
   ) : null;
