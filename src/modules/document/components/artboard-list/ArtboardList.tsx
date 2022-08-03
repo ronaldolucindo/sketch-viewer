@@ -1,17 +1,15 @@
-import { useMemo } from 'react';
 import Image from 'components/image/Image';
 import Loader from 'components/loader/Loader';
 import Viewer from 'components/viewer/Viewer';
-import { apiToViewerFromat } from 'modules/document/dataTransform';
 import { DocumentState } from 'modules/document/documentReducer';
-import { Artboard } from 'modules/document/types';
+import { UIArtboard } from 'modules/document/types';
 import styles from './ArtboardList.module.scss';
 
 type ArtboardListProps = {
   isError: boolean;
   isLoading: boolean;
   isSuccess: boolean;
-  data: Artboard[];
+  data?: UIArtboard[];
   state: DocumentState;
   userOpensArtboard: (index: number) => void;
   userClosesArtboard: () => void;
@@ -24,14 +22,14 @@ function ArtboardList(props: ArtboardListProps) {
     isError,
     isLoading,
     isSuccess,
-    data,
+    data = [],
     state,
     userOpensArtboard,
     userClosesArtboard,
     userClicksNextArtboard,
     userClicksPrevArtboard,
   } = props;
-  const viewerData = useMemo(() => apiToViewerFromat(data), [data]);
+
   if (isLoading)
     return (
       <div className={styles['loader-container']}>
@@ -49,18 +47,18 @@ function ArtboardList(props: ArtboardListProps) {
     <div className={styles['artboard-list']}>
       {isSuccess && (
         <>
-          {data.map((artboard: Artboard, index: number) => (
+          {data.map((artboard: UIArtboard, index: number) => (
             <div
               className={styles['artboard-item']}
-              key={artboard.identifier}
+              key={artboard.id}
               onClick={() => userOpensArtboard(index)}
             >
               <Image
                 className={styles.image}
-                src={artboard.files[0].thumbnails[0].url}
-                alt={artboard.name}
+                src={artboard.thumb}
+                alt={artboard.title}
               />
-              <p>{artboard.name}</p>
+              <p>{artboard.title}</p>
             </div>
           ))}
           <Viewer
@@ -69,7 +67,7 @@ function ArtboardList(props: ArtboardListProps) {
             onNextItem={userClicksNextArtboard}
             onPrevItem={userClicksPrevArtboard}
             currentIndex={state.currentArtboard}
-            data={viewerData}
+            data={data}
           />
         </>
       )}

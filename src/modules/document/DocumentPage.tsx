@@ -15,17 +15,16 @@ function DocumentPage() {
     userClicksNextArtboard,
     userClicksPrevArtboard,
   } = useDocument();
-  const artboards = data?.version.document.artboards.entries || [];
 
   return (
     <>
-      <Header title={data?.version.document.name} />
+      <Header title={data?.name} />
       <main className={styles.main}>
         <ArtboardList
           isError={isError}
           isLoading={isLoading}
           isSuccess={isSuccess}
-          data={artboards}
+          data={data?.artboards}
           state={state}
           userOpensArtboard={userOpensArtboard}
           userClosesArtboard={userClosesArtboard}

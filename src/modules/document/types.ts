@@ -32,3 +32,16 @@ export type Thumbnail = {
   type: 'S' | 'M' | 'L' | 'XL';
   url: string;
 };
+
+export type UIDocument = {
+  id: string;
+  name: string;
+  artboards: UIArtboard[];
+};
+
+export type UIArtboard = {
+  id: string;
+  title: string;
+  url?: string;
+  thumb?: string;
+};
